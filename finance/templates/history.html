@@ -1,0 +1,47 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Transaction History
+{% endblock %}
+
+{% block main %}
+<div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Symbol</th>
+                <th>Shares</th>
+                <th>Price</th>
+                <th>Date</th>
+            </tr>
+        </thead>
+        {% if tr_history|length > 0 %}
+            {% for item in tr_history %}
+            <tr>
+                <td>
+                    {{ loop.index }}
+                </td>
+                <td>
+                    {{ item["symbol"] }}
+                </td>
+                <td>
+                    {{ item["amount"] }}
+                </td>
+                <td>
+                    {{ item["price"] | usd }}
+                </td>
+                <td>
+                    {{ item["datetime"] }}
+                </td>
+            </tr>
+            {% endfor %}
+        {% else %}
+            <tr>
+                <td colspan="5">No transaction yet!</td>
+            </tr>
+        {% endif %}
+
+    </table>
+</div>
+{% endblock %}

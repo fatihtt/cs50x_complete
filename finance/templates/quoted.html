@@ -1,0 +1,30 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Quoted
+{% endblock %}
+
+{% block main %}
+    <div>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Stock</th>
+                    <th>Symbol</th>
+                    <th>Price</th>
+                </tr>
+            </thead>
+            <tr>
+                <td>
+                    {{ sym_dict["name"] }}
+                </td>
+                <td>
+                    {{ sym_dict["symbol"] }}
+                </td>
+                <td>
+                    {{ sym_dict["price"] | usd }}
+                </td>
+            </tr>
+        </table>
+    </div>
+{% endblock %}

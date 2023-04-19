@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+        <link href="styles.css" rel="stylesheet">
+        <title>Trivia!</title>
+        <script>
+            // TODO: Add code to check answers to questions
+            document.addEventListener("DOMContentLoaded", function (e) {
+                // SELECT BUTTONS
+                let buttons = document.querySelectorAll(".fbutton");
+                let q2button = document.querySelector("#fq2button");
+                // ADD EVENT LISTENERS
+                for (i = 0; i < buttons.length; i++) {
+                    (buttons[i]).addEventListener("click", check);
+                }
+                q2button.addEventListener("click", checkq2);
+            });
+
+            const correctAnswer = "answer2";
+            function check (e) {
+
+                // RESET BUTTONS
+                let buttons = document.querySelectorAll(".fbutton");
+                for (i = 0; i < buttons.length; i++) {
+                    (buttons[i]).classList.remove("correct");
+                    (buttons[i]).classList.remove("incorrect");
+                }
+                const messageP = document.querySelector(".message");
+                messageP.innerHTML = "";
+
+                clickedItem = window.event.target;
+                answer = clickedItem.dataset.answer;
+
+                if (answer === correctAnswer) {
+                    clickedItem.classList.add("correct");
+                    messageP.innerHTML = "Correct!"
+                }
+                else {
+                    clickedItem.classList.add("incorrect");
+                    messageP.innerHTML = "Incorrect!"
+                }
+            }
+
+            const correctAnswerQ2 = "correct answer";
+            function checkq2 (e) {
+                const q2message = document.querySelector(".messageq2");
+                // FIND TEXT INPUT VALUE
+                const q2answer = document.querySelector(".q2input").value;
+                if(q2answer === correctAnswerQ2) {
+                    document.querySelector(".q2input").style.background = "green";
+                    q2message.innerHTML = "Correct!";
+                }
+                else {
+                    document.querySelector(".q2input").style.color = "red";
+                    q2message.innerHTML = "Incorrect!";
+                }
+            }
+        </script>
+    </head>
+    <body>
+        <div class="header">
+            <h1>Trivia!</h1>
+        </div>
+
+        <div class="container">
+            <div class="section">
+                <h2>Part 1: Multiple Choice </h2>
+                <hr>
+                <!-- TODO: Add multiple choice question here -->
+                <h3>Question</h3>
+                <p class="message"></p>
+                <button data-answer="answer1" class="fbutton">Answer 1</button>
+                <button data-answer="answer2" class="fbutton">Answer 2</button>
+                <button data-answer="answer3" class="fbutton">Answer 3</button>
+            </div>
+
+            <div class="section">
+                <h2>Part 2: Free Response</h2>
+                <hr>
+                <!-- TODO: Add free response question here -->
+                <h3>Question 2</h3>
+                <p class="messageq2"></p>
+                <input type="text" class="q2input">
+                <button id="fq2button">Submit</button>
+            </div>
+        </div>
+    </body>
+</html>

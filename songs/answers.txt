@@ -1,0 +1,3 @@
+with averages as 0.66 energy, 0.48 valence, 0.71 danceability, we can say they had energetic aura
+
+in addition to spotify's way, music types and listening frequency might being added as criterias

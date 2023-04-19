@@ -1,0 +1,53 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Welcome - {{ username }}
+{% endblock %}
+
+{% block main %}
+<div>
+    {{ username }} Your balance: {{ cash | usd }}
+</div>
+<div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Stock</th>
+                <th>Symbol</th>
+                <th>Amount</th>
+                <th>Price</th>
+                <th>Total</th>
+            </tr>
+        </thead>
+        {% if stocks|length > 0 %}
+            {% for item in stocks %}
+            <tr>
+                <td>
+                    {{ loop.index}}
+                </td>
+                <td>
+                    {{ item["name"] }}
+                </td>
+                <td>
+                    {{ item.symbol }}
+                </td>
+                <td>
+                    {{ item.amount}}
+                </td>
+                <td>
+                    {{ stockprices[loop.index0]}}
+                </td>
+                <td>
+                    {{ totals[loop.index0] }}
+                </td>
+            </tr>
+            {% endfor %}
+        {% else %}
+            <tr>
+                <td colspan="5">No stock yet!</td>
+            </tr>
+        {% endif %}
+    </table>
+</div>
+{% endblock %}

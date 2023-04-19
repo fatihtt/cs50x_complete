@@ -1,0 +1,14 @@
+sort1 uses: bubble sort
+
+How do you know?: in sorted list, sort1 make best performance but in randoms, its performance got worst
+
+sort2 uses: merge sort
+
+How do you know?: best performance in big data
+
+sort3 uses: selection sort
+
+How do you know?: better performance in reverse and random, worst performance in sorted
+
+
+
